@@ -31,6 +31,7 @@ services:
       - AIRFLOW_DATABASE_USERNAME=postgres
       - AIRFLOW_DATABASE_PASSWORD=postgres
       - AIRFLOW_EXECUTOR=LocalExecutor
+      - AIRFLOW_LOAD_EXAMPLES=no
       - AIRFLOW_WEBSERVER_HOST=airflow
     volumes:
       - airflow_scheduler_data:/airflow_scheduler
