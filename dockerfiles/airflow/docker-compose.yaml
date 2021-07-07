@@ -24,9 +24,21 @@ services:
       - 8080:8080
     volumes:
       - airflow_data:/airflow
+  airflow-scheduler:
+    image: docker.io/bitnami/airflow-scheduler:2
+    environment:
+      - AIRFLOW_DATABASE_NAME=postgres
+      - AIRFLOW_DATABASE_USERNAME=postgres
+      - AIRFLOW_DATABASE_PASSWORD=postgres
+      - AIRFLOW_EXECUTOR=LocalExecutor
+      - AIRFLOW_WEBSERVER_HOST=airflow
+    volumes:
+      - airflow_scheduler_data:/airflow_scheduler
 
 volumes:
   airflow_data:
+    driver: local
+  airflow_scheduler_data:
     driver: local
   postgresql_data:
     driver: local
